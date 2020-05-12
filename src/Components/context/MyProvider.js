@@ -5,13 +5,13 @@ export const MyContext = React.createContext();
 class MyProvider extends Component {
 
     state = {
-        products: {},
+        products: [],
     }
 
     render() {
 
         const { products } = this.state;
-        
+
 
         const { children } = this.props;
 
@@ -20,9 +20,9 @@ class MyProvider extends Component {
                 state: this.state,
                 putStockInContext: (data) => this.setState({
                     products: data,
-                }),  
-             
-                
+                }),
+                products,
+
             }}
             >
                 {children}
