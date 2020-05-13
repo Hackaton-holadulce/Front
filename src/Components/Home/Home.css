@@ -1,6 +1,7 @@
 .home-container{
   background:url('./cake.png') no-repeat;
   background-size: cover;
-  height: 100vh;
+  background-attachment: fixed;
   padding-top: 30px;
+  height: 94vh;
 }

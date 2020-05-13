@@ -1,7 +1,8 @@
 .insert-stock-container {
     background:url('./butter.png') no-repeat;
     background-size: cover;
-    height: 100vh;
+    background-attachment: fixed;
+    height: 94vh;
 }
 
 
@@ -17,7 +18,9 @@
     padding-top: 30px;
     background:url('./muffin.png') no-repeat;
     background-size: cover;
-    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-attachment: fixed;
 }
 
 .container-insert-stock {
@@ -71,5 +74,30 @@ form {
 .box-container {
     background:url('../Box/spoon.png') no-repeat;
     background-size: cover;
-    height: 100vh;
+    background-attachment: fixed;
+}
+
+.panel-block {
+    justify-content: space-around;
+}
+
+
+.table {
+    background-color: transparent!important;
+}
+
+.panel {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.panel-heading {
+    font-size: 15px;
+}
+
+.panel-heading  p{
+    display: none;
+}
+
+html {
+    scroll-behavior: smooth;
 }

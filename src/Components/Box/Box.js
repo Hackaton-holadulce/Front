@@ -62,9 +62,6 @@ const Box = () => {
             description: "",
             ingredient: "",
             quantity:""})
-
-
-
     }
 
     return(
