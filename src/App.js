@@ -6,6 +6,8 @@ import { Switch, Route } from 'react-router-dom';
 import Stock from './Components/Stock/Stock';
 import Box from './Components/Box/Box';
 import Navbar from './Components/Navbar/Navbar';
+import SaveStock from './Components/Stock/insertStock';
+
 //import { MyContext } from '../context/MyProvider';
 
 
@@ -17,7 +19,6 @@ class App extends React.Component {
         return (
             <MyProvider>
                 <div className="App">
-                    <Navbar/>
                     <Switch>
                         <Route
                             exact path="/"
@@ -35,6 +36,12 @@ class App extends React.Component {
                             path="/box"
                             render={(props) => (
                             <div> <Box  {...props} /> </div>
+                            )}
+                        />
+                        <Route
+                            path="/form-stock"
+                            render={(props) => (
+                            <div> <SaveStock  {...props} /> </div>
                             )}
                         />
                     </Switch>
