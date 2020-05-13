@@ -52,7 +52,7 @@ const Box = () => {
                 ingredients_quantity: quantityIngredients
             }) 
         })
-        
+
         .then(res => res.json())
         .then(res => {
           console.log(res)
@@ -77,7 +77,6 @@ const Box = () => {
                     <textarea onChange={(event) => updateData({ ...data, description: event.target.value })}></textarea>
                     <br/>
                     
-                <button type="submit">Create Recipe</button>
                 
                 </form>
                 <form onSubmit={(event) => addIngredients(event)}>
@@ -93,7 +92,9 @@ const Box = () => {
 
                     <label>Quantity:</label>
                     <input type="number" id="quantity" name="quantity" min="1" max="100" onChange={(event) => updateData({ ...data, quantity: event.target.value })}></input>
-                    <button type="submit">Add ingredient</button>
+                    <button type="submit">Add ingredient</button><br/>
+                    <button type="submit">Create Recipe</button>
+
                 </form>
                 </div>}
             
