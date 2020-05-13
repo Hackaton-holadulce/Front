@@ -6,6 +6,7 @@ function SaveStock() {
   const { products } = React.useContext(MyContext);
   //state
   const [ingredient, setIngredient] = useState([])
+  const [getdb, setGetdb] = useState([])
   const [stock, setStock] = useState({
     name: "",
     expiration_date: "",
@@ -37,6 +38,13 @@ function SaveStock() {
                 console.log(res)
               })
             }
+
+    useEffect(() => {
+      fetch('http://localhost:5000/stock_ingredients')
+      .then(res => res.json())
+      .then(data => setGetdb(data))
+    }, [])
+
       return(
         <div className="">
           { ingredient &&
@@ -55,7 +63,7 @@ function SaveStock() {
                   <label
                     type="number"
                     value={stock.id_ingredient}
-                    onChange={(event) => setStock({ ...stock, id_ingredient: event.target.value })} />
+                    onChange={(event) => ({ ...stock, id_ingredient: event.target.value })} />
                     <select id="ingredient">
                       {ingredient.map((ingredient, index) =>
                         <option>{ingredient.id_ingredient}</option>
@@ -67,6 +75,7 @@ function SaveStock() {
                   </button>
             </form>
           }
+
         </div>
   );
 
