@@ -49,7 +49,7 @@ const Box = () => {
 		        //     quantity: data.quantity
                 // }]
                 ingredients_quantity: quantityIngredients
-            }) 
+            })
         })
 
         .then(res => res.json())
@@ -62,13 +62,13 @@ const Box = () => {
             description: "",
             ingredient: "",
             quantity:""})
-        
-       
+
+
 
     }
 
     return(
-    <div className="">  
+    <div className="box-container">
         {display &&
                 <div className="message">
                     <article class={`message is-success`}>
@@ -91,10 +91,10 @@ const Box = () => {
                 <div  className="field">
                     <label>Box Recipe Name:</label>
                     <div className="control">
-                    <input 
+                    <input
                         placeholder="Producto"
                         className="input"
-                        type="text"  
+                        type="text"
                         onChange={(event) => updateData({ ...data, name: event.target.value })}/>
                     </div>
                 </div>
@@ -103,48 +103,48 @@ const Box = () => {
                 <div className="field" >
                     <label>Quantity:</label>
                     <div className="control">
-                    <input 
+                    <input
                         className="input"
-                        type="number" 
-                        id="quantity" 
-                        name="quantity" 
-                        min="1" 
-                        max="100" 
+                        type="number"
+                        id="quantity"
+                        name="quantity"
+                        min="1"
+                        max="100"
                         onChange={(event) => updateData({ ...data, quantity: event.target.value })}/>
                     </div>
                     </div>
                     <div className="field" >
                     <label>Select ingredients:</label>
                     <div className="control">
-                    <select 
+                    <select
                         className="select"
                         onChange={(event) => updateData({ ...data, ingredient: event.target.value })}>
                             <option value={''} key={''}></option>
                             {ingredient.map(ingredient=>{
                             return(
                                 <option value={ingredient.id_ingredient} key={ingredient.id_ingredient}>{ingredient.name}</option>
-                            )})}  
+                            )})}
                     </select>
                     </div>
                     </div>
                     <button style={{marginBottom:'12px'}}
-                        className="button is-link" 
+                        className="button is-link"
                         onClick={(event) => addIngredients(event)}>Add ingredient</button>
-                   
-                    
+
+
                 </div>
 
                 <div className="field">
                     <label>Description:</label>
                     <div className="control">
-                    <textarea 
+                    <textarea
                         className="textarea"
                         onChange={(event) => updateData({ ...data, description: event.target.value })}/>
                     </div>
                 </div>
-                
+
                 <div class="control submit-button">
-                    <button 
+                    <button
                         type="submit" className="button is-link"
                         >Create Box</button>
                 </div>
@@ -155,14 +155,14 @@ const Box = () => {
                     {quantityIngredients.map(ingredient=>{
                         return(
                             <ul>
-                            <li key={ingredient.ingredient}>{ingredient.ingredient} // {ingredient.quantity}</li> 
+                            <li key={ingredient.ingredient}>{ingredient.ingredient} // {ingredient.quantity}</li>
                             </ul>
                         )
                     })}
                </div>
                }
                 </div>}
-            
+
     </div>
     )
     }
