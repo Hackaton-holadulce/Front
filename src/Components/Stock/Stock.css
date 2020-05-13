@@ -9,3 +9,23 @@
 .container-stock {
     margin-top: 4.5vw;
 }
+
+.container-insert-stock {
+    top: 50px;
+    position:relative;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    width: 60%;
+}
+
+.title-stock {
+    text-align: center;
+    margin-top: 30px;
+    display: block;
+    font-size: 2em;
+    font-weight: bolder;
+}
