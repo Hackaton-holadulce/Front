@@ -60,7 +60,7 @@ function SaveStock() {
                             <button class="delete" aria-label="delete"></button>
                         </div>
                         <div class="message-body">
-                            Has añadido {`${stock.name}`}
+                            Has añadido {`${stock.kg} Kg de ${stock.name} que caduca(n) el ${stock.expiration_date}`}
                         </div>
                     </article>
                 </div>
