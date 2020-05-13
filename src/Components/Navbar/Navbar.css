@@ -16,8 +16,10 @@ nav{
   justify-content:space-between;
   align-items:center;
   padding:5px 20px 5px 0px;
-  background:#fff;
+  background:transparent;
   box-shadow:0 0 10px rgba(0,0,0,0.1);
+  width:100%;
+  z-index:999999;
 }
 
 /*.logo{

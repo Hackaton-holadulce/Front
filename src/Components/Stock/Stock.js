@@ -80,28 +80,30 @@ const Stock = () => {
      // alert(datediff(parseDate(dateOne), parseDate(dateTwo)));
 
      return (
-          <Fragment>
-               <div>
-                    <h1>Stock</h1>
-               </div>
-               <div className="alerts">
-                    Alerts here
-                    {/* We would here filter the ingredients that have < 1 Kg */}
-               </div>
+          <Fragment >
+               <div className="container-stock">
+                    <div>
+                         <h1>Stock</h1>
+                    </div>
+                    <div className="alerts">
+                         Alerts here
+                         {/* We would here filter the ingredients that have < 1 Kg */}
+                    </div>
 
-               <div className="stock-container">
-                    {products.map((product, index) => (
+                    <div className="stock-container">
+                         {products.map((product, index) => (
 
-                         <div className={product.kg <= 1 || product.daysToExpire <= 30  ? "empty" : "full"}  key={index}>
-                              {product.name}
-                              {` || `}
-                              {moment(product.expiration_date).format('L')}
-                              {` || `}
-                              {product.daysToExpire}
-                              {` || `}
-                              {product.kg}
-                         </div>
-                    ))}
+                              <div className={product.kg <= 1 || product.daysToExpire <= 30  ? "empty" : "full"}  key={index}>
+                                   {product.name}
+                                   {` || `}
+                                   {moment(product.expiration_date).format('L')}
+                                   {` || `}
+                                   {product.daysToExpire}
+                                   {` || `}
+                                   {product.kg}
+                              </div>
+                         ))}
+                    </div>
                </div>
           </Fragment>
      )

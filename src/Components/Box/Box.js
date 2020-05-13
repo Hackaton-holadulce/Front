@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Box = () => (
 
-    <div className="App">
+    <div className="box-container">
 
         <Link to="">Home</Link>
         <Link to="stock">Stock</Link>
