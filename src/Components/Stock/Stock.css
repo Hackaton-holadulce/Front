@@ -22,6 +22,7 @@
     position:relative;
     font-family: 'Poppins', sans-serif;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -35,6 +36,17 @@ form {
     display: block;
     font-size: 2em;
     font-weight: bolder;
+}
+.added_ingredients{
+    border: 1px solid rgba(211, 211, 211, 0.815);
+    
+    margin: 5px;
+}
+.field-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
 }
 
 .hide {
