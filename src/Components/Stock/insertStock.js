@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { MyContext } from '../context/MyProvider';
 import './Stock.css';
 
 function SaveStock() {
   //state
-    const [ingredient, setIngredient] = useState([])
-    const [stock, setStock] = useState({
-        name: "",
-        expiration_date: "",
-        kg: 0,
-        id_ingredient: 1,
-    })
+
+  const [ingredient, setIngredient] = useState([])
+  const [getdb, setGetdb] = useState([])
+  const [stock, setStock] = useState({
+    name: "",
+    expiration_date: "",
+    kg: 0,
+    id_ingredient: 1,
+  })
 
     useEffect(() => {
         fetch('http://localhost:5000/ingredient')
@@ -34,8 +35,15 @@ function SaveStock() {
                 }).then(res => res.json())
                 .then(res => {
                 console.log(res)
-                })
-        }
+              })
+            }
+
+    useEffect(() => {
+      fetch('http://localhost:5000/stock_ingredients')
+      .then(res => res.json())
+      .then(data => setGetdb(data))
+    }, [])
+
 
     return (
         <div>
