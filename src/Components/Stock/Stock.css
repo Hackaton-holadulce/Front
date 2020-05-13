@@ -41,3 +41,19 @@ form {
     justify-content: space-evenly;
     align-items: flex-end;
 }
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.message {
+    display: block;
+}
+
+.delete {
+    display: none;
+}

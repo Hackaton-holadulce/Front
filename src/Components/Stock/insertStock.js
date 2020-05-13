@@ -12,6 +12,7 @@ function SaveStock() {
     kg: 0,
     id_ingredient: 1,
   })
+  const [display, setDisplay] = useState(false)
 
     useEffect(() => {
         fetch('http://localhost:5000/ingredient')
@@ -19,24 +20,28 @@ function SaveStock() {
         .then(data => setIngredient([...data]))
         }, [])
 
-        const submitInfo = (event) => {
-            event.preventDefault();
-                fetch('http://localhost:5000/stock_ingredients', {
-                    method: 'POST',
-                    headers: new Headers({
-                        'Content-Type': 'application/json'
-                    }),
-                    body: JSON.stringify({
-                    name: stock.name,
-                    expiration_date: stock.expiration_date,
-                    kg: stock.kg,
-                    id_ingredient: stock.id_ingredient
+    const submitInfo = (event) => {
+        event.preventDefault();
+            fetch('http://localhost:5000/stock_ingredients', {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                }),
+                body: JSON.stringify({
+                name: stock.name,
+                expiration_date: stock.expiration_date,
+                kg: stock.kg,
+                id_ingredient: stock.id_ingredient
                 })
-                }).then(res => res.json())
-                .then(res => {
-                console.log(res)
-              })
-            }
+            })
+            .then(res => res.json())
+            .then(res => setDisplay(true))
+            setTimeout(() => {
+                setDisplay(false);
+            }, 5000);
+
+    }
+
 
     useEffect(() => {
       fetch('http://localhost:5000/stock_ingredients')
@@ -47,6 +52,19 @@ function SaveStock() {
 
     return (
         <div>
+            {display &&
+                <div className="message">
+                    <article class={`message is-success`}>
+                        <div class="message-header">
+                            <p>Guardado!</p>
+                            <button class="delete" aria-label="delete"></button>
+                        </div>
+                        <div class="message-body">
+                            Has añadido {`${stock.name}`}
+                        </div>
+                    </article>
+                </div>
+            }
             <div className="title-stock">
                 <h1>Añadir a mi stock</h1>
             </div>
@@ -84,8 +102,8 @@ function SaveStock() {
                                 placeholder="en Kg"
                                 className="input"
                                 type="number"
-                                value={stock.id_ingredient}
-                                onChange={(event) => setStock({ ...stock, id_ingredient: event.target.value })} />
+                                value={stock.kg}
+                                onChange={(event) => setStock({ ...stock, kg: event.target.value })} />
                             </div>
                         </div>
 
