@@ -4,7 +4,7 @@ import '../Stock/Stock.css';
 
 
 const Box = () => {
-   // var ingredientsQuantity = []; 
+    const [display, setDisplay] = useState(false)
     const [ingredient, setIngredient]=useState()
     const [data, updateData] = useState({
         name: "",
@@ -31,7 +31,7 @@ const Box = () => {
     }
 
     //Submit button
-    const submitInfo = (event) => {
+    const createRecipe = (event) => {
         event.preventDefault();
 
         console.log('adding recipe')
@@ -53,22 +53,41 @@ const Box = () => {
         })
 
         .then(res => res.json())
-        .then(res => {
-          console.log(res)
-        })
-       
+        .then(res => setDisplay(true))
+            setTimeout(() => {
+                setDisplay(false);
+            }, 5000);
+            updateData({
+            name: "",
+            description: "",
+            ingredient: "",
+            quantity:""})
+        
        
 
     }
 
     return(
-    <div className="">
+    <div className="">  
+        {display &&
+                <div className="message">
+                    <article class={`message is-success`}>
+                        <div class="message-header">
+                            <p>Guardado!</p>
+                            <button class="delete" aria-label="delete"></button>
+                        </div>
+                        <div class="message-body">
+                            Has añadido {`${data.name}`}
+                        </div>
+                    </article>
+                </div>
+            }
         <div className="title-stock">
             <h1>Box Creator</h1>
         </div>
         {ingredient&&
         <div className="container-insert-stock">
-            <form onSubmit={(event) => submitInfo(event)}>
+            <form onSubmit={(event) => createRecipe(event)}>
                 <div  className="field">
                     <label>Box Recipe Name:</label>
                     <div className="control">
@@ -136,7 +155,7 @@ const Box = () => {
                     {quantityIngredients.map(ingredient=>{
                         return(
                             <ul>
-                            <li>{ingredient.ingredient} // {ingredient.quantity}</li> 
+                            <li key={ingredient.ingredient}>{ingredient.ingredient} // {ingredient.quantity}</li> 
                             </ul>
                         )
                     })}
