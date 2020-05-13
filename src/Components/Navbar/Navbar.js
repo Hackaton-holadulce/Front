@@ -20,6 +20,9 @@ class Navbar extends React.Component {
                     <li className="navbar-item">
                         <Link to="box">Box</Link>
                     </li>
+                    <li className="navbar-item">
+                        <Link to="form-stock">Add stock</Link>
+                    </li>
                     </ul>
                 </nav>
             </div>

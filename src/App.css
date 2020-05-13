@@ -7,6 +7,12 @@
   pointer-events: none;
 }
 
+body {
+  top: 50px;
+  position:relative;
+  font-family: 'Poppins', sans-serif;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
