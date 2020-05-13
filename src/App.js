@@ -1,6 +1,6 @@
 import React from 'react';
 import MyProvider from './Components/context/MyProvider';
-//import './App.css';
+import './App.css';
 import Home from './Components/Home/Home';
 import { Switch, Route } from 'react-router-dom';
 import Stock from './Components/Stock/Stock';
