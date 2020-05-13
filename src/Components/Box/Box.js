@@ -92,6 +92,7 @@ const Box = () => {
                     <label>Quantity:</label>
                     <input type="number" id="quantity" name="quantity" min="1" max="100" onChange={(event) => updateData({ ...data, quantity: event.target.value })}></input>
                     <button type="submit">Add ingredient</button>
+                    <div>{data.ingredient}</div>
                 </form>
                 </div>}
             
