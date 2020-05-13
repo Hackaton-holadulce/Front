@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import logoHola from './logoHolaDulce.png'
 
 class Navbar extends React.Component {
     render() {
@@ -24,6 +25,9 @@ class Navbar extends React.Component {
                         <Link to="form-stock">Add stock</Link>
                     </li>
                     </ul>
+                    <div>
+                      <img alt="logoHola" className="logoHola" src={logoHola} />
+                    </div>
                 </nav>
             </div>
         )

@@ -51,7 +51,7 @@ function SaveStock() {
 
 
     return (
-        <div>
+        <div className="insert-stock-container">
             {display &&
                 <div className="message">
                     <article class={`message is-success`}>
@@ -135,4 +135,3 @@ function SaveStock() {
 }
 
 export default SaveStock;
-
