@@ -5,6 +5,7 @@ import Home from './Components/Home/Home';
 import { Switch, Route } from 'react-router-dom';
 import Stock from './Components/Stock/Stock';
 import Box from './Components/Box/Box';
+import Navbar from './Components/Navbar/Navbar';
 //import { MyContext } from '../context/MyProvider';
 
 
@@ -16,6 +17,7 @@ class App extends React.Component {
         return (
             <MyProvider>
                 <div className="App">
+                    <Navbar/>
                     <Switch>
                         <Route
                             exact path="/"
@@ -28,7 +30,7 @@ class App extends React.Component {
                             render={(props) => (
                             <div> <Stock  {...props} /> </div>
                             )}
-                        /> 
+                        />
                         <Route
                             path="/box"
                             render={(props) => (
