@@ -28,9 +28,7 @@ const Box = () => {
     const addIngredients = (event) => {
         event.preventDefault();
        // quantityIngredients.push({ingredient:data.ingredient, quantity:data.quantity})
-        let cosa = {ingredient:data.ingredient, quantity:data.quantity}
-        setQuantityIngredients( cosa)
-        console.log(quantityIngredients)
+        setQuantityIngredients(oldArray => [...oldArray, {ingredient:data.ingredient, quantity:data.quantity} ])
     }
 
     //Submit button
@@ -47,12 +45,14 @@ const Box = () => {
             body: JSON.stringify({
                 name: data.name,
 	            description: data.description,
-	            ingredients_quantity: [{
-		            ingredient: data.ingredient,
-		            quantity: data.quantity
-                }]
+	            // ingredients_quantity: [{
+		        //     ingredient: data.ingredient,
+		        //     quantity: data.quantity
+                // }]
+                ingredients_quantity: quantityIngredients
             }) 
         })
+
         .then(res => res.json())
         .then(res => {
           console.log(res)
@@ -77,12 +77,13 @@ const Box = () => {
                     <textarea onChange={(event) => updateData({ ...data, description: event.target.value })}></textarea>
                     <br/>
                     
-                <button type="submit">Create Recipe</button>
                 
                 </form>
                 <form onSubmit={(event) => addIngredients(event)}>
                         <label>Select ingredients:</label>
                         <select onChange={(event) => updateData({ ...data, ingredient: event.target.value })}>
+                        <option value={''} key={''}></option>
+
                             {ingredient.map(ingredient=>{
                                 return(
                                     <option value={ingredient.id_ingredient} key={ingredient.id_ingredient}>{ingredient.name}</option>
@@ -91,7 +92,9 @@ const Box = () => {
 
                     <label>Quantity:</label>
                     <input type="number" id="quantity" name="quantity" min="1" max="100" onChange={(event) => updateData({ ...data, quantity: event.target.value })}></input>
-                    <button type="submit">Add ingredient</button>
+                    <button type="submit">Add ingredient</button><br/>
+                    <button type="submit">Create Recipe</button>
+
                 </form>
                 </div>}
             
