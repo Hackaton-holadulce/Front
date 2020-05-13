@@ -1,3 +1,10 @@
+.insert-stock-container {
+    background:url('./butter.png') no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+
 .full {
     color: green;
 }
@@ -7,7 +14,10 @@
 }
 
 .container-stock {
-    margin-top: 4.5vw;
+    padding-top: 30px;
+    background:url('./muffin.png') no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
 
 .container-insert-stock {
@@ -15,6 +25,7 @@
     position:relative;
     font-family: 'Poppins', sans-serif;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -24,10 +35,21 @@ form {
 
 .title-stock {
     text-align: center;
-    margin-top: 30px;
+    padding-top: 30px;
     display: block;
     font-size: 2em;
     font-weight: bolder;
+}
+.added_ingredients{
+    border: 1px solid rgba(211, 211, 211, 0.815);
+
+    margin: 5px;
+}
+.field-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
 }
 
 .hide {
@@ -44,4 +66,10 @@ form {
 
 .delete {
     display: none;
+}
+
+.box-container {
+    background:url('../Box/spoon.png') no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
