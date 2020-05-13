@@ -29,3 +29,19 @@ form {
     font-size: 2em;
     font-weight: bolder;
 }
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.message {
+    display: block;
+}
+
+.delete {
+    display: none;
+}
