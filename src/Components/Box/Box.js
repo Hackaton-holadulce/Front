@@ -62,110 +62,118 @@ const Box = () => {
             description: "",
             ingredient: "",
             quantity:""})
-
-
-
     }
 
-    return(
-    <div className="box-container">
-        {display &&
+    return (
+        <div className="box-container">
+            {display &&
                 <div className="message">
-                    <article class={`message is-success`}>
-                        <div class="message-header">
+                    <article className={`message is-success`}>
+                        <div className="message-header">
                             <p>Guardado!</p>
-                            <button class="delete" aria-label="delete"></button>
+                            <button className="delete" aria-label="delete"></button>
                         </div>
-                        <div class="message-body">
+                        <div className="message-body">
                             Has añadido {`${data.name}`}
                         </div>
                     </article>
                 </div>
             }
-        <div className="title-stock">
-            <h1>Box Creator</h1>
+            <div className="title-stock">
+                <h1>Crea tu Box</h1>
+            </div>
+            {ingredient&&
+                <div className="container-insert-stock">
+                    <form onSubmit={(event) => createRecipe(event)}>
+                        <div  className="field">
+                            <label>Nombre de tu receta Box:</label>
+                            <div className="control">
+                                <input
+                                    placeholder="Producto"
+                                    className="input"
+                                    type="text"
+                                    onChange={(event) => updateData({ ...data, name: event.target.value })}
+                                />
+                            </div>
+                        </div>
+
+                        <div className='field-row'>
+                            <div className="field" >
+                                <label>Cantidad:</label>
+                                <div className="control">
+                                <input
+                                    className="input"
+                                    type="number"
+                                    id="quantity"
+                                    name="quantity"
+                                    min="1"
+                                    max="100"
+                                    onChange={(event) => updateData({ ...data, quantity: event.target.value })}
+                                />
+                            </div>
+                        </div>
+                            <div className="field" >
+                                <label>Selecciona los ingredientes:</label>
+                                <div className="control">
+                                    <select
+                                        className="select"
+                                        onChange={(event) => updateData({ ...data, ingredient: event.target.value })}
+                                    >
+                                        <option value={''} key={''}></option>
+                                        {ingredient.map(ingredient=>{
+                                            return(
+                                                <option
+                                                    value={ingredient.id_ingredient}
+                                                    key={ingredient.id_ingredient}
+                                                >
+                                                {ingredient.name}
+                                                </option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
+                            </div>
+                            <button
+                                // style={{marginBottom:'12px'}}
+                                className="button is-link"
+                                onClick={(event) => addIngredients(event)}>Añade un ingrediente >>
+                            </button>
+                        </div>
+
+                        <div className="field">
+                            <label>Descripción:</label>
+                            <div className="control">
+                                <textarea
+                                className="textarea"
+                                onChange={(event) => updateData({ ...data, description: event.target.value })}/>
+                            </div>
+                        </div>
+
+                        <div className="control submit-button">
+                            <button
+                                type="submit"
+                                className="button is-link"
+                            >
+                                Crear Box
+                            </button>
+                        </div>
+                    </form>
+                    {quantityIngredients!=="" &&
+                        <div className='added_ingredients'>
+                            <h4>Ingridientes añadidos:</h4>
+                            {quantityIngredients.map(ingredient=>{
+                                return(
+                                    <ul>
+                                        <li key={ingredient.ingredient}>{ingredient.ingredient} // {ingredient.quantity}</li>
+                                    </ul>
+                                )
+                            })}
+                        </div>
+                    }
+                </div>
+            }
         </div>
-        {ingredient&&
-        <div className="container-insert-stock">
-            <form onSubmit={(event) => createRecipe(event)}>
-                <div  className="field">
-                    <label>Box Recipe Name:</label>
-                    <div className="control">
-                    <input
-                        placeholder="Producto"
-                        className="input"
-                        type="text"
-                        onChange={(event) => updateData({ ...data, name: event.target.value })}/>
-                    </div>
-                </div>
-
-                <div className='field-row'>
-                <div className="field" >
-                    <label>Quantity:</label>
-                    <div className="control">
-                    <input
-                        className="input"
-                        type="number"
-                        id="quantity"
-                        name="quantity"
-                        min="1"
-                        max="100"
-                        onChange={(event) => updateData({ ...data, quantity: event.target.value })}/>
-                    </div>
-                    </div>
-                    <div className="field" >
-                    <label>Select ingredients:</label>
-                    <div className="control">
-                    <select
-                        className="select"
-                        onChange={(event) => updateData({ ...data, ingredient: event.target.value })}>
-                            <option value={''} key={''}></option>
-                            {ingredient.map(ingredient=>{
-                            return(
-                                <option value={ingredient.id_ingredient} key={ingredient.id_ingredient}>{ingredient.name}</option>
-                            )})}
-                    </select>
-                    </div>
-                    </div>
-                    <button style={{marginBottom:'12px'}}
-                        className="button is-link"
-                        onClick={(event) => addIngredients(event)}>Add ingredient</button>
-
-
-                </div>
-
-                <div className="field">
-                    <label>Description:</label>
-                    <div className="control">
-                    <textarea
-                        className="textarea"
-                        onChange={(event) => updateData({ ...data, description: event.target.value })}/>
-                    </div>
-                </div>
-
-                <div class="control submit-button">
-                    <button
-                        type="submit" className="button is-link"
-                        >Create Box</button>
-                </div>
-                </form>
-                {quantityIngredients!=="" &&
-                <div className='added_ingredients'>
-                    <h4>Added ingridients:</h4>
-                    {quantityIngredients.map(ingredient=>{
-                        return(
-                            <ul>
-                            <li key={ingredient.ingredient}>{ingredient.ingredient} // {ingredient.quantity}</li>
-                            </ul>
-                        )
-                    })}
-               </div>
-               }
-                </div>}
-
-    </div>
     )
-    }
-
+}
 
 export default Box;

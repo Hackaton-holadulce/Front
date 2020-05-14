@@ -30,8 +30,15 @@ body {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.button.is-link {
+  background-color: #b0b4b5;
+  /* background-color: #63b5ec; */
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-link:hover {
+  background-color: #878485;
 }
 
 @keyframes App-logo-spin {

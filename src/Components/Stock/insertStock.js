@@ -75,7 +75,7 @@ function SaveStock() {
                             <label className="label">Nombre</label>
                             <div className="control">
                             <input
-                                placeholder="Producto"
+                                placeholder="Nombre del producto"
                                 className="input"
                                 type="text"
                                 value={stock.name}
@@ -87,7 +87,7 @@ function SaveStock() {
                             <label className="label">Fecha de caducidad</label>
                             <div className="control">
                             <input
-                                placeholder="AAAA-MM-DD"
+                                placeholder="(AAAA-MM-DD)"
                                 className="input"
                                 type="text"
                                 value={stock.expiration_date}
@@ -102,6 +102,8 @@ function SaveStock() {
                                 placeholder="en Kg"
                                 className="input"
                                 type="number"
+                                min="1"
+                                max="100"
                                 value={stock.kg}
                                 onChange={(event) => setStock({ ...stock, kg: event.target.value })} />
                             </div>

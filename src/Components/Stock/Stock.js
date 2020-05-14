@@ -1,66 +1,135 @@
-import React, { Fragment, useState, useContext, useEffect } from 'react';
+import React, { Fragment, useContext } from 'react';
 import moment from 'moment'
 import { MyContext } from '../context/MyProvider';
 import './Stock.css';
 
-//backend route --> context
-
 const Stock = () => {
 
-     const { putStockInContext, products } = useContext(MyContext);
-     const { state } = useContext(MyContext)
-     console.log('productos', state.products)
-
-     useEffect(() => {
-          // const fetchMyAPI = async () => {
-          //      let response = await fetch(`http://localhost:5000/stock_ingredients`)
-          //      response = await response.json()
-          //      console.log('response', response)
-          //      putStockInContext(response)
-          // }
-          fetchMyAPI()
-     }, [])
-
-     const fetchMyAPI = async () => {
-          let response = await fetch(`http://localhost:5000/stock_ingredients`)
-          response = await response.json()
-          handleExpiration(response)
-          putStockInContext(response)
-     }
-
-     const handleExpiration = (products) => {
-          products.forEach((product) => {
-               const expirationDate = moment(product.expiration_date);
-               product.daysToExpire = -1 * Math.ceil(moment.duration(moment().diff(expirationDate)).as('days'))
-          })
-     }
-
-
+     const { products } = useContext(MyContext)
 
      return (
           <Fragment >
                <div className="container-stock">
-                    <div>
-                         <h1>Stock</h1>
-                    </div>
-                    <div className="alerts">
-                         Alerts here
-                         {/* We would here filter the ingredients that have < 1 Kg */}
-                    </div>
+                    <div className="articles">
+                         <article id="caducidad" className="panel is-danger">
+                              <p className="panel-heading">
+                                   Va a caducar
+                              </p>
+                              <p className="panel-tabs">
+                                   <a className="is-active">Van a caducar</a>
+                                   <a href="#cantidad">Queda poco</a>
+                                   <a href="#correcto">Todo bien</a>
+                              </p>
+                              {/* <div className="panel-block">
+                                   <p className="control has-icons-left">
+                                        <input className="input is-primary" type="text" placeholder="Search" />
+                                        <span className="icon is-left">
+                                             <i className="fas fa-search" aria-hidden="true"></i>
+                                        </span>
+                                   </p>
+                              </div> */}
+                              <table class="table is-fullwidth">
+                                   <thead>
+                                        <tr>
+                                             <th>Nombre</th>
+                                             <th>Fecha de caducidad</th>
+                                             <th>Días hasta que caduque</th>
+                                             <th>Cantidad</th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+                                        {products.filter(({ daysToExpire }) => daysToExpire <= 30)
+                                             .map((product, index) => (
+                                                  <tr key={index}>
+                                                       <td>{product.name}</td>
+                                                       <td>{moment(product.expiration_date).format('L')}</td>
+                                                       <td>{product.daysToExpire}</td>
+                                                       <td>{product.kg}</td>
+                                                  </tr>
+                                             ))}
+                                   </tbody>
+                              </table>
+                         </article>
 
-                    <div className="stock-container">
-                         {products.map((product, index) => (
+                         <article  id="cantidad" className="panel is-warning">
+                              <p className="panel-heading">
+                                   Queda poco
+                              </p>
+                              <p className="panel-tabs">
+                                   <a href="#caducidad">Van a caducar</a>
+                                   <a className="is-active">Queda poco</a>
+                                   <a href="#correcto">Todo bien</a>
+                              </p>
+                              {/* <div className="panel-block">
+                                   <p className="control has-icons-left">
+                                        <input className="input is-primary" type="text" placeholder="Search" />
+                                        <span className="icon is-left">
+                                             <i className="fas fa-search" aria-hidden="true"></i>
+                                        </span>
+                                   </p>
+                              </div> */}
+                              <table class="table is-fullwidth">
+                                   <thead>
+                                        <tr>
+                                             <th>Nombre</th>
+                                             <th>Fecha de caducidad</th>
+                                             <th>Días hasta que caduque</th>
+                                             <th>Cantidad</th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+                                        {products.filter(({ kg }) => kg <= 1)
+                                             .map((product, index) => (
+                                                  <tr key={index}>
+                                                       <td>{product.name}</td>
+                                                       <td>{moment(product.expiration_date).format('L')}</td>
+                                                       <td>{product.daysToExpire}</td>
+                                                       <td>{product.kg}</td>
+                                                  </tr>
+                                             ))}
+                                   </tbody>
+                              </table>
+                         </article>
 
-                              <div className={product.kg <= 1 || product.daysToExpire <= 30  ? "empty" : "full"}  key={index}>
-                                   {product.name}
-                                   {` || `}
-                                   {moment(product.expiration_date).format('L')}
-                                   {` || `}
-                                   {product.daysToExpire}
-                                   {` || `}
-                                   {product.kg}
-                              </div>
-                         ))}
+                         <article id="correcto" className="panel is-primary">
+                              <p className="panel-heading">
+                                   Todo bien
+                              </p>
+                              <p className="panel-tabs">
+                                   <a href="#caducidad">Van a caducar</a>
+                                   <a href="#cantidad">Queda poco</a>
+                                   <a className="is-active">Todo bien</a>
+                              </p>
+                              {/* <div className="panel-block">
+                                   <p className="control has-icons-left">
+                                        <input className="input is-primary" type="text" placeholder="Search" />
+                                        <span className="icon is-left">
+                                             <i className="fas fa-search" aria-hidden="true"></i>
+                                        </span>
+                                   </p>
+                              </div> */}
+                              <table class="table is-fullwidth">
+                                   <thead>
+                                        <tr>
+                                             <th>Nombre</th>
+                                             <th>Fecha de caducidad</th>
+                                             <th>Días hasta que caduque</th>
+                                             <th>Cantidad</th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+                                        {products.filter(({ daysToExpire, kg }) => daysToExpire > 30 && kg > 1)
+                                             .map((product, index) => (
+                                                  <tr key={index}>
+                                                       <td>{product.name}</td>
+                                                       <td>{moment(product.expiration_date).format('L')}</td>
+                                                       <td>{product.daysToExpire}</td>
+                                                       <td>{product.kg}</td>
+                                                  </tr>
+                                             ))}
+                                   </tbody>
+                              </table>
+                         </article>
                     </div>
                </div>
           </Fragment>
@@ -68,4 +137,3 @@ const Stock = () => {
 };
 
 export default Stock;
-
