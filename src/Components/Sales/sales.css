@@ -1,9 +1,8 @@
-
-.box {   
-  display: flex;   
-  flex-wrap: wrap;   
-  justify-content: space-around; 
-} 
-.title.is-4 {   
-  font-size: 1em; 
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.title.is-4 {
+  font-size: 1em;
 }

@@ -15,7 +15,8 @@ function Sale() {
         .then(data => setBox([...data]))
         }, [])
         const buyBox = (event) => {
-            event.preventDefault();
+            event.preventDefault();    
+              setDisplay(true); 
             console.log(event.target.value)
                 fetch('http://localhost:5000/sales', {
                     method: 'POST',
@@ -30,11 +31,25 @@ function Sale() {
                 .then(res => console.log(res))
                     setTimeout(() => {
                         setDisplay(false);
-                    }, 5000);
+                    }, 1000);
                   }
       return (
+       
         <div className='sales-box'>
-          <h1>Cajas</h1>
+           {display &&
+            <div className="message">
+                <article class={`message is-success`}>
+                    <div class="message-header">
+                        <p>Box generada</p>
+                        <button class="delete" aria-label="delete"></button>
+                    </div>
+                    <div class="message-body">
+                        <p>Ingredientes quitados de stock</p>
+                    </div>
+                </article>
+            </div>
+           }
+          <h1>Cajas listas para preparar</h1>
             <div className='box'>
             {box.map((type, index) => (
               <div className="card">
@@ -55,13 +70,10 @@ function Sale() {
                       <p className="subtitle is-6">Baking box: {type.id_box}</p>
                     </div>
                   </div>
-                  <div className="content">
-                    {type.description}
-                  </div>
                   <button
                     onClick={(event) => buyBox(event)}
                     value={type.id_box}
-                    className="button is-primary">Comprar</button>
+                    className="button is-primary">Preparar</button>
                 </div>
               </div>
             ))}
