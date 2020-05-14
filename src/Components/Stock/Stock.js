@@ -148,12 +148,17 @@ const Stock = () => {
                                         </tr>
                                    </thead>
                                    <tbody>
-                                        {filteredProducts.filter(({ daysToExpire, kg }) => daysToExpire > 30 && kg > 1)
+                                       {/*</table> {filteredProducts.filter(({ daysToExpire, kg }) => daysToExpire > 30 && kg > 1)*/}
+                                   {products.filter(({ daysToExpire, kg }) => daysToExpire > 30 && kg > 1)
                                              .map((product, index) => (
                                                   <tr key={index}>
                                                        <td>{product.name}</td>
-                                                       <td>{moment(product.expiration_date).format('L')}</td>
-                                                       <td>{product.daysToExpire}</td>
+                                                       <td>{product.expiration_date === "2030-12-29T23:00:00.000Z"
+                                                       ? "No caduca"
+                                                       : moment(product.expiration_date).format('L') }</td>
+                                                       <td>{product.expiration_date === "2030-12-29T23:00:00.000Z"
+                                                       ? "-"
+                                                       : product.daysToExpire}</td>
                                                        <td>{product.kg}</td>
                                                   </tr>
                                              ))}
