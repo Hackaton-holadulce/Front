@@ -1,11 +1,35 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import moment from 'moment'
 import { MyContext } from '../context/MyProvider';
 import './Stock.css';
 
 const Stock = () => {
 
-     const { products } = useContext(MyContext)
+  const { putStockInContext, products } = useContext(MyContext);
+
+  useEffect(() => {
+      // const fetchMyAPI = async () => {
+      //      let response = await fetch(`http://localhost:5000/stock_ingredients`)
+      //      response = await response.json()
+      //      console.log('response', response)
+      //      putStockInContext(response)
+      // }
+      fetchMyAPI()
+  }, [])
+
+  const fetchMyAPI = async () => {
+      let response = await fetch(`http://localhost:5000/stock_ingredients`)
+      response = await response.json()
+      handleExpiration(response)
+      putStockInContext(response)
+  }
+
+  const handleExpiration = (products) => {
+      products.forEach((product) => {
+          const expirationDate = moment(product.expiration_date);
+          product.daysToExpire = -1 * Math.ceil(moment.duration(moment().diff(expirationDate)).as('days'))
+      })
+  }
 
      return (
           <Fragment >
