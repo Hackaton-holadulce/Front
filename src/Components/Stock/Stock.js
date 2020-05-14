@@ -1,12 +1,9 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import moment from 'moment'
 import { MyContext } from '../context/MyProvider';
 import './Stock.css';
-
 const Stock = () => {
-
   const { putStockInContext, products } = useContext(MyContext);
-
   useEffect(() => {
       // const fetchMyAPI = async () => {
       //      let response = await fetch(`http://localhost:5000/stock_ingredients`)
@@ -16,25 +13,28 @@ const Stock = () => {
       // }
       fetchMyAPI()
   }, [])
-
   const fetchMyAPI = async () => {
       let response = await fetch(`http://localhost:5000/stock_ingredients`)
       response = await response.json()
       handleExpiration(response)
       putStockInContext(response)
   }
-
   const handleExpiration = (products) => {
       products.forEach((product) => {
           const expirationDate = moment(product.expiration_date);
           product.daysToExpire = -1 * Math.ceil(moment.duration(moment().diff(expirationDate)).as('days'))
       })
   }
-
+     const [input, setInput] = useState('')
+     const filteredProducts = products.filter(({ name }) => {
+          let regexToUse = new RegExp(input, 'i');
+          return (regexToUse).test(name);
+     })
      return (
           <Fragment >
                <div className="container-stock">
                     <div className="articles">
+                         <input className="input" style={{marginBottom: 20}} value={input} placeholder="Escribe para buscar productos" type="text" onChange={(e) => { setInput(e.target.value) }}/>
                          <article id="caducidad" className="panel is-danger">
                               <p className="panel-heading">
                                    Va a caducar
@@ -62,7 +62,7 @@ const Stock = () => {
                                         </tr>
                                    </thead>
                                    <tbody>
-                                        {products.filter(({ daysToExpire }) => daysToExpire <= 30)
+                                        {filteredProducts.filter(({ daysToExpire }) => daysToExpire <= 30)
                                              .map((product, index) => (
                                                   <tr key={index}>
                                                        <td>{product.name}</td>
@@ -71,10 +71,17 @@ const Stock = () => {
                                                        <td>{product.kg}</td>
                                                   </tr>
                                              ))}
+                                        {filteredProducts.filter(({ daysToExpire }) => daysToExpire <= 30).length === 0 &&
+                                             <tr>
+                                                  <td>-</td>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td></td>
+                                             </tr>
+                                        }
                                    </tbody>
                               </table>
                          </article>
-
                          <article  id="cantidad" className="panel is-warning">
                               <p className="panel-heading">
                                    Queda poco
@@ -102,7 +109,7 @@ const Stock = () => {
                                         </tr>
                                    </thead>
                                    <tbody>
-                                        {products.filter(({ kg }) => kg <= 1)
+                                        {filteredProducts.filter(({ kg }) => kg <= 1)
                                              .map((product, index) => (
                                                   <tr key={index}>
                                                        <td>{product.name}</td>
@@ -114,7 +121,6 @@ const Stock = () => {
                                    </tbody>
                               </table>
                          </article>
-
                          <article id="correcto" className="panel is-primary">
                               <p className="panel-heading">
                                    Todo bien
@@ -142,7 +148,7 @@ const Stock = () => {
                                         </tr>
                                    </thead>
                                    <tbody>
-                                        {products.filter(({ daysToExpire, kg }) => daysToExpire > 30 && kg > 1)
+                                        {filteredProducts.filter(({ daysToExpire, kg }) => daysToExpire > 30 && kg > 1)
                                              .map((product, index) => (
                                                   <tr key={index}>
                                                        <td>{product.name}</td>
@@ -159,5 +165,4 @@ const Stock = () => {
           </Fragment>
      )
 };
-
 export default Stock;
