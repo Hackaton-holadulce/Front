@@ -25,7 +25,7 @@ class Navbar extends React.Component {
                         <Link to="form-stock">Añadir stock</Link>
                     </li>
                     <li className="navbar-item">
-                        <Link to="sale">Venta</Link>
+                        <Link to="sale">Crear Caja</Link>
                     </li>
                     </ul>
                     <div>
