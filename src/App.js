@@ -7,6 +7,7 @@ import Stock from './Components/Stock/Stock';
 import Box from './Components/Box/Box';
 import Navbar from './Components/Navbar/Navbar';
 import SaveStock from './Components/Stock/insertStock';
+import Sale from './Components/Sales/Sales';
 
 //import { MyContext } from '../context/MyProvider';
 
@@ -43,6 +44,12 @@ class App extends React.Component {
                             path="/form-stock"
                             render={(props) => (
                             <div> <SaveStock  {...props} /> </div>
+                            )}
+                        />
+                        <Route
+                            path="/sale"
+                            render={(props) => (
+                            <div> <Sale  {...props} /> </div>
                             )}
                         />
                     </Switch>

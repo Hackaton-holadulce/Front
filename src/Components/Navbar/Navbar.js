@@ -24,6 +24,9 @@ class Navbar extends React.Component {
                     <li className="navbar-item">
                         <Link to="form-stock">Añadir stock</Link>
                     </li>
+                    <li className="navbar-item">
+                        <Link to="sale">Venta</Link>
+                    </li>
                     </ul>
                     <div>
                       <img alt="logoHola" className="logoHola" src={logoHola} />
