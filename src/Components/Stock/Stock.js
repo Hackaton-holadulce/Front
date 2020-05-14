@@ -13,7 +13,7 @@ const Stock = () => {
                     <div className="articles">
                          <article id="caducidad" className="panel is-danger">
                               <p className="panel-heading">
-                                   Van a caducar
+                                   Va a caducar
                               </p>
                               <p className="panel-tabs">
                                    <a className="is-active">Van a caducar</a>

@@ -5,18 +5,9 @@
     height: 94vh;
 }
 
-
-.full {
-    color: green;
-}
-
-.empty {
-    color: red;
-}
-
 .container-stock {
     padding-top: 30px;
-    background:url('./muffin.png') no-repeat;
+    background:url('./cocoa.png') no-repeat;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -51,8 +42,8 @@ form {
 .field-row{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    align-items: flex-end;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .hide {
@@ -106,4 +97,43 @@ html {
     padding-top: 30px;
     background-attachment: fixed;
     height: 94vh!important;
+}
+
+.added_ingredients {
+    background-color: white;
+    padding: 5px 10px;
+    margin-top: 3vh;
+}
+
+.textarea, .input, .added_ingredients {
+    opacity: 50%;
+}
+
+.select:not(.is-multiple) {
+    width: 25em;
+    opacity: 50%;
+}
+
+.input {
+    height: 3.7vh;
+}
+
+.label {
+    color: #4a4a4a;
+}
+
+#ingredient {
+    width: 18em;
+}
+
+.field {
+    text-align: left;
+}
+
+.panel .is-danger .panel-heading {
+    background-color: #ed7990!important;
+}
+
+.panel .is-warning {
+    background-color: #f1d566;
 }

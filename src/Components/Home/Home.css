@@ -1,7 +1,12 @@
 .home-container{
-  background:url('./cake.png') no-repeat;
+  /* background: url('./cake.png') no-repeat; */
+  background: url('../Stock/brown-eggs.png') no-repeat;
   background-size: cover;
   background-attachment: fixed;
   padding-top: 30px;
   height: 94vh;
+}
+
+.notification.is-danger.is-light {
+  opacity: 80%;
 }
