@@ -67,12 +67,7 @@ const Box = () => {
             ingredient_name: "",
             quantity:""})
 
-            updateData({
-                name: "",
-                description: "",
-                ingredient: "",
-                quantity:""
-            })
+            setQuantityIngredients([])
     }
 
     return (
