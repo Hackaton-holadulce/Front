@@ -5,8 +5,7 @@ function Sale() {
   const [box, setBox] = useState([{
     name: "",
     description: "",
-    id_box: 0,
-    package: 0,
+    id_box: 0
   }])
   const [display, setDisplay] = useState(false)
 
@@ -20,14 +19,14 @@ function Sale() {
         const buyBox = (event) => {
             event.preventDefault();
             console.log(event.target.value)
+            
                 fetch('http://localhost:5000/sales', {
                     method: 'POST',
                     headers: new Headers({
                         'Content-Type': 'application/json'
                     }),
                     body: JSON.stringify({
-                      id_box: box.id_box,
-                      package: box.package
+                      id_box: event.target.value
                     })
                 })
                 .then(res => res.json())

@@ -10,6 +10,7 @@ const Box = () => {
         name: "",
         description: "",
         ingredient: "",
+        ingredient_name: "",
         quantity:""
     })
 
@@ -27,7 +28,8 @@ const Box = () => {
     const addIngredients = (event) => {
         event.preventDefault();
        // quantityIngredients.push({ingredient:data.ingredient, quantity:data.quantity})
-        setQuantityIngredients(oldArray => [...oldArray, {ingredient:data.ingredient, quantity:data.quantity} ])
+        setQuantityIngredients(oldArray => [...oldArray, {ingredient:data.ingredient, ingredient_name: data.ingredient_name, quantity:data.quantity} ])
+        updateData({ ...data, ingredient:"", quantity:""})
     }
 
     //Submit button
@@ -43,7 +45,8 @@ const Box = () => {
               }),
             body: JSON.stringify({
                 name: data.name,
-	            description: data.description,
+                description: data.description,
+                ingredient_name: data.ingredient_name,
 	            // ingredients_quantity: [{
 		        //     ingredient: data.ingredient,
 		        //     quantity: data.quantity
@@ -61,7 +64,10 @@ const Box = () => {
             name: "",
             description: "",
             ingredient: "",
+            ingredient_name: "",
             quantity:""})
+
+            setQuantityIngredients([])
     }
 
     return (
@@ -92,6 +98,7 @@ const Box = () => {
                                     placeholder="Producto"
                                     className="input"
                                     type="text"
+                                    value={data.name}
                                     onChange={(event) => updateData({ ...data, name: event.target.value })}
                                 />
                             </div>
@@ -106,8 +113,9 @@ const Box = () => {
                                     type="number"
                                     id="quantity"
                                     name="quantity"
-                                    min="1"
+                                    min="0"
                                     max="100"
+                                    value={data.quantity}
                                     onChange={(event) => updateData({ ...data, quantity: event.target.value })}
                                 />
                             </div>
@@ -117,14 +125,14 @@ const Box = () => {
                                 <div className="control">
                                     <select
                                         className="select"
-                                        onChange={(event) => updateData({ ...data, ingredient: event.target.value })}
+                                        onChange={(event) => updateData({ ...data, ingredient: event.target.value, ingredient_name: event.target.value})}
                                     >
                                         <option value={''} key={''}></option>
                                         {ingredient.map(ingredient=>{
                                             return(
                                                 <option
-                                                    value={ingredient.id_ingredient}
-                                                    key={ingredient.id_ingredient}
+                                                    value={ingredient.id_ingredient, ingredient.name}
+                                                    key={ingredient.id_ingredient, ingredient.name}
                                                 >
                                                 {ingredient.name}
                                                 </option>
@@ -144,6 +152,7 @@ const Box = () => {
                             <label>Descripción:</label>
                             <div className="control">
                                 <textarea
+                                value={data.description}
                                 className="textarea"
                                 onChange={(event) => updateData({ ...data, description: event.target.value })}/>
                             </div>
