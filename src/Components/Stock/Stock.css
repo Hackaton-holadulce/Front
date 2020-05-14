@@ -101,3 +101,9 @@ form {
 html {
     scroll-behavior: smooth;
 }
+
+.box-container {
+    padding-top: 30px;
+    background-attachment: fixed;
+    height: 94vh!important;
+}
