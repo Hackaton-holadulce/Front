@@ -49,7 +49,9 @@ function Sale() {
                 </article>
             </div>
            }
-          <h1>Cajas listas para preparar</h1>
+             <div className='titleCajas'>
+              <h1 >Cajas listas para preparar</h1>
+            </div>
             <div className='box'>
             {box.map((type, index) => (
               <div className="card">
