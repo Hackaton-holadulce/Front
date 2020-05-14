@@ -8,11 +8,7 @@ import Box from './Components/Box/Box';
 import SaveStock from './Components/Stock/insertStock';
 import Sale from './Components/Sales/Sales';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-import Navbar from './Components/Navbar/Navbar.js'
-=======
 import Navbar from './Components/Navbar/Navbar';
->>>>>>> e9d7858b9ea92fb2aaf488e760ffde876b5fd638
 //import { MyContext } from '../context/MyProvider';
 
 

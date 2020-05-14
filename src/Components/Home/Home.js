@@ -38,22 +38,22 @@ const Home = () => {
             <div className="main-page">
                     <div className="home-play-buttons">
                      <Link to="stock"> 
-                        <button type="button" className="">
+                        <button className="dash_button" type="button">
                             Productos
                         </button>
                      </Link>
                      <Link to="form-stock">
-                        <button type="button" className="" >
+                        <button  className="dash_button" type="button" >
                             Añadir Productos
                         </button>
                      </Link>
                     <Link to="sale">
-                        <button type="button" className="" >
+                        <button className="dash_button" type="button" >
                             Boxes
                         </button>
                     </Link>
                     <Link to="box">
-                        <button type="button" className="" >
+                        <button  className="dash_button" type="button" >
                             Crear Boxes
                         </button>
                     </Link>

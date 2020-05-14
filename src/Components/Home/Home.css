@@ -1,12 +1,31 @@
 .home-container{
   /* background: url('./cake.png') no-repeat; */
-  background: url('../Stock/brown-eggs.png') no-repeat;
+  background: url('https://c.pxhere.com/photos/a6/61/food_table_cake_dessert_napkin-23295.jpg!d') no-repeat;
   background-size: cover;
   background-attachment: fixed;
   padding-top: 30px;
   height: 94vh;
+  width: 100%;
+  margin: auto;
 }
 
 .notification.is-danger.is-light {
   opacity: 80%;
+}
+.main-page{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  
+}
+.dash_button{
+  padding: 5px;
+  width:200px;
+  height: 200px;
+  margin:20px;
+  border: 1px solid lightgray;
+  border-radius: 5%;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3em;
+  opacity: 0.7;
 }
