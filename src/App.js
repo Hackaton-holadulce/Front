@@ -8,6 +8,7 @@ import Box from './Components/Box/Box';
 import SaveStock from './Components/Stock/insertStock';
 import Sale from './Components/Sales/Sales';
 import { Link } from 'react-router-dom';
+import Navbar from './Components/Navbar/Navbar';
 //import { MyContext } from '../context/MyProvider';
 
 
@@ -19,7 +20,7 @@ class App extends React.Component {
         return (
             <MyProvider>
                 <div className="App">
-                    <Link to="">Volver al dashboard</Link>
+                    <Navbar/>
                     <Switch>
                         <Route
                             exact path="/"

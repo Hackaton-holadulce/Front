@@ -2,10 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { MyContext } from '../context/MyProvider';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import logoHola from './logoHolaDulce.png';
 import './Home.css';
-import './Navbar.css'
-
 
 
 const Home = () => {

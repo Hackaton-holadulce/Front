@@ -25,7 +25,6 @@ class MyProvider extends Component {
 
             }}
             >
-                <Link to="">Volver al dashboard</Link>
                 {children}
             </MyContext.Provider>
         );
