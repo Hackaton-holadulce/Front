@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css';
-import logoHola from './logoHolaDulce.png'
+import '../Home/Navbar.css';
+import logoHola from '../Home/logoHolaDulce.png'
 
 class Navbar extends React.Component {
     render() {

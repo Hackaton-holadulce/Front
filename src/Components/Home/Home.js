@@ -39,10 +39,6 @@ const Home = () => {
     return (
         <div className="home-container">
             <div className="main-page">
-               { /*<div className="notification is-danger is-light">
-                    <button className="delete"></button>
-                    {`Tienes `}<strong>{`${products.filter(({ daysToExpire }) => daysToExpire <= 30).length}`}</strong>{` producto(s) a punto de caducar y te estás quedando sin `}<strong>{`${products.filter(({ kg }) => kg <= 1).length}`}</strong>{` producto(s)`}
-                     </div>*/}
                     <div className="home-play-buttons">
                      <Link to="stock"> 
                         <button type="button" className="">
