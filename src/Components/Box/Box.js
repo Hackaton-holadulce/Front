@@ -28,6 +28,7 @@ const Box = () => {
         event.preventDefault();
        // quantityIngredients.push({ingredient:data.ingredient, quantity:data.quantity})
         setQuantityIngredients(oldArray => [...oldArray, {ingredient:data.ingredient, quantity:data.quantity} ])
+        updateData({ ...data, ingredient:"", quantity:""})
     }
 
     //Submit button
@@ -62,6 +63,13 @@ const Box = () => {
             description: "",
             ingredient: "",
             quantity:""})
+
+            updateData({
+                name: "",
+                description: "",
+                ingredient: "",
+                quantity:""
+            })
     }
 
     return (
@@ -92,6 +100,7 @@ const Box = () => {
                                     placeholder="Producto"
                                     className="input"
                                     type="text"
+                                    value={data.name}
                                     onChange={(event) => updateData({ ...data, name: event.target.value })}
                                 />
                             </div>
@@ -106,8 +115,9 @@ const Box = () => {
                                     type="number"
                                     id="quantity"
                                     name="quantity"
-                                    min="1"
+                                    min="0"
                                     max="100"
+                                    value={data.quantity}
                                     onChange={(event) => updateData({ ...data, quantity: event.target.value })}
                                 />
                             </div>
@@ -144,6 +154,7 @@ const Box = () => {
                             <label>Descripción:</label>
                             <div className="control">
                                 <textarea
+                                value={data.description}
                                 className="textarea"
                                 onChange={(event) => updateData({ ...data, description: event.target.value })}/>
                             </div>
