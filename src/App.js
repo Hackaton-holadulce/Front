@@ -5,10 +5,9 @@ import Home from './Components/Home/Home';
 import { Switch, Route } from 'react-router-dom';
 import Stock from './Components/Stock/Stock';
 import Box from './Components/Box/Box';
-import Navbar from './Components/Navbar/Navbar';
 import SaveStock from './Components/Stock/insertStock';
 import Sale from './Components/Sales/Sales';
-
+import { Link } from 'react-router-dom';
 //import { MyContext } from '../context/MyProvider';
 
 
@@ -20,7 +19,7 @@ class App extends React.Component {
         return (
             <MyProvider>
                 <div className="App">
-                    <Navbar />
+                    <Link to="">Volver al dashboard</Link>
                     <Switch>
                         <Route
                             exact path="/"
